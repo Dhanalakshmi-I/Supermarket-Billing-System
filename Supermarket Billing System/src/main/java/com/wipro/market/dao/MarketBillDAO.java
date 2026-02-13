@@ -10,9 +10,8 @@ import com.wipro.market.bean.MarketBillBean;
 import com.wipro.market.util.DBUtil;
 
 public class MarketBillDAO {
-
-    public String generateBillID(String customerName, Date purchaseDate) {
-        String billId = "";
+public String generateBillID(String customerName, Date purchaseDate) {
+	       String billId = "";
         try {
             Connection con = DBUtil.getDBConnection();
             PreparedStatement ps =
@@ -34,9 +33,7 @@ public class MarketBillDAO {
     public String createRecord(MarketBillBean bean) {
         try {
             Connection con = DBUtil.getDBConnection();
-            PreparedStatement ps = con.prepareStatement(
-                "INSERT INTO MARKET_BILL_TB VALUES (?,?,?,?,?,?,?,?)");
-
+            PreparedStatement ps = con.prepareStatement("INSERT INTO MARKET_BILL_TB VALUES (?,?,?,?,?,?,?,?)");
             ps.setString(1, bean.getBillId());
             ps.setString(2, bean.getCustomerName());
             ps.setString(3, bean.getItemName());
@@ -45,11 +42,9 @@ public class MarketBillDAO {
             ps.setDouble(6, bean.getPrice());
             ps.setDouble(7, bean.getTotalAmount());
             ps.setString(8, bean.getRemarks());
-
             int rows = ps.executeUpdate();
             if (rows > 0)
                 return bean.getBillId();
-
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -58,12 +53,9 @@ public class MarketBillDAO {
     public MarketBillBean fetchRecord(String customerName, Date purchaseDate) {
         try {
             Connection con = DBUtil.getDBConnection();
-            PreparedStatement ps = con.prepareStatement(
-                "SELECT * FROM MARKET_BILL_TB WHERE CUSTOMERNAME=? AND PURCHASE_DATE=?");
-
+            PreparedStatement ps = con.prepareStatement("SELECT * FROM MARKET_BILL_TB WHERE CUSTOMERNAME=? AND PURCHASE_DATE=?");
             ps.setString(1, customerName);
             ps.setDate(2, new java.sql.Date(purchaseDate.getTime()));
-
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
                 MarketBillBean b = new MarketBillBean();
@@ -82,11 +74,9 @@ public class MarketBillDAO {
         }
         return null;
     }
-
     public boolean recordExists(String customerName, Date purchaseDate) {
         return fetchRecord(customerName, purchaseDate) != null;
     }
-
     public List<MarketBillBean> fetchAllRecords() {
         List<MarketBillBean> list = new ArrayList<>();
         try {

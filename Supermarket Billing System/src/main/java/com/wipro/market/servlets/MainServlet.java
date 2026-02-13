@@ -14,8 +14,7 @@ import com.wipro.market.service.Administrator;
 
 @WebServlet("/MainServlet")
 public class MainServlet extends HttpServlet {
-
-    public String addRecord(HttpServletRequest req) {
+   public String addRecord(HttpServletRequest req) {
         try {
             MarketBillBean bean = new MarketBillBean();
             bean.setCustomerName(req.getParameter("customerName"));
@@ -30,7 +29,6 @@ public class MainServlet extends HttpServlet {
             return "FAIL";
         }
     }
-
     public MarketBillBean viewRecord(HttpServletRequest req) {
         try {
             return new Administrator().viewRecord(

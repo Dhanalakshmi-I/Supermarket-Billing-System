@@ -7,16 +7,12 @@
     <title>All Bills</title>
 </head>
 <body>
-
 <h2>All Bill Records</h2>
-
 <%
     List<MarketBillBean> list = (List<MarketBillBean>) request.getAttribute("billList");
     String message = (String) request.getAttribute("message");
-
     if (list != null && !list.isEmpty()) {
 %>
-
 <table border="1">
     <tr>
         <th>Bill ID</th>
@@ -28,7 +24,6 @@
         <th>Total Amount</th>
         <th>Remarks</th>
     </tr>
-
 <%
         for (MarketBillBean bill : list) {
 %>
@@ -45,9 +40,7 @@
 <%
         }
 %>
-
 </table>
-
 <%
     } else {
         if (message == null) message = "No records available!";
@@ -56,9 +49,7 @@
 <%
     }
 %>
-
 <br>
 <a href="menu.html">Back to Menu</a>
-
 </body>
 </html>

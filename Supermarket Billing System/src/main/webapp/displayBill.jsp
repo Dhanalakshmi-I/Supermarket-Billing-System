@@ -6,13 +6,10 @@
     <title>Bill Details</title>
 </head>
 <body>
-
 <h2>Bill Details</h2>
-
 <%
     MarketBillBean bill = (MarketBillBean) request.getAttribute("bill");
     String message = (String) request.getAttribute("message");
-
     if (bill != null) {
 %>
         Bill ID: <%= bill.getBillId() %><br><br>
@@ -31,9 +28,7 @@
 <%
     }
 %>
-
 <br>
 <a href="menu.html">Back to Menu</a>
-
 </body>
 </html>
